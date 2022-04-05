@@ -42,22 +42,22 @@ public class Enemy : MonoBehaviour, IDamageable
         _colorChangeC = StartCoroutine(ColorChangeOnTakeDamage());
     }
 
-    private void CheckDeath()
+    private bool CheckDeath()
     {
         if (_health <= 0)
         {
-            transform.position += Vector3.up * 2;
-
             Debug.Log("Died");
+
+            return true;
         }
+
+        return false;
     }
 
     private IEnumerator ColorChangeOnTakeDamage()
     {
         var effectTime = 0f;
-
         var multiplier = 1 / COLOR_CHANGE_DURATION;
-
         _meshRenderer.material.color = _colorOnDamage;
 
         while (true)
@@ -65,7 +65,6 @@ public class Enemy : MonoBehaviour, IDamageable
             effectTime += Time.deltaTime * multiplier;
 
             var color = Color.Lerp(_colorOnDamage, _normalColor, effectTime);
-
             _meshRenderer.material.color = color;
 
             if (effectTime >= COLOR_CHANGE_DURATION * multiplier)

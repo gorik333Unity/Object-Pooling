@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
@@ -8,9 +7,7 @@ public class Pool<T>
 {
     private List<Poolable> _allItem;
     private List<Poolable> _available;
-
     private Action<Component> _initialize;
-
     private GameObject _prefab;
 
     public Pool(GameObject prefab, int initialCapacity, Action<Component> initialize)

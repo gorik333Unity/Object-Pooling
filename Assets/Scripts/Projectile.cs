@@ -1,14 +1,11 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
     private Vector3 _startPos;
-
     private float _damage;
     private float _speed;
-
 
     public void Initialize(Vector3 startPos, float damage, float speed)
     {
@@ -17,12 +14,10 @@ public class Projectile : MonoBehaviour
         _speed = speed;
     }
 
-
     public void StartFly()
     {
         StartCoroutine(IEBulletMove());
     }
-
 
     private IEnumerator IEBulletMove()
     {
@@ -36,12 +31,10 @@ public class Projectile : MonoBehaviour
         }
     }
 
-
     private void OnTriggerEnter(Collider other)
     {
         DetectDamageable(other);
     }
-
 
     private void DetectDamageable(Collider other)
     {
@@ -50,7 +43,6 @@ public class Projectile : MonoBehaviour
         if (damageable != null)
             OnDetectDamageable(damageable);
     }
-
 
     private void OnDetectDamageable(IDamageable damageable)
     {

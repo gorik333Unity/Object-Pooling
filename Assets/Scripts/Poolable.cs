@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Poolable : MonoBehaviour
@@ -13,6 +11,7 @@ public class Poolable : MonoBehaviour
     private Pool<Poolable> _pool;
 
     public int InitialCapacity { get => _initialCapacity; }
+
     /// <summary>
     /// Repool this instance, and move us under the poolmanager
     /// </summary>
@@ -22,6 +21,7 @@ public class Poolable : MonoBehaviour
         gameObject.SetActive(false);
         _pool.Return(this);
     }
+
     /// <summary>
     /// Set current pool
     /// </summary>
@@ -32,6 +32,7 @@ public class Poolable : MonoBehaviour
 
         _pool = pool;
     }
+
     /// <summary>
     /// Check if pool doesn't null
     /// </summary>
@@ -42,6 +43,7 @@ public class Poolable : MonoBehaviour
         else
             return true;
     }
+
     /// <summary>gameObject
     /// Pool the object if possible, otherwise destroy it
     /// </summary>
@@ -59,6 +61,7 @@ public class Poolable : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
     /// <summary>
     /// If the prefab is poolable returns a pooled object otherwise instantiates a new object
     /// </summary>
@@ -74,6 +77,7 @@ public class Poolable : MonoBehaviour
 
         return instance;
     }
+
     /// <summary>
     /// If the prefab is poolable returns a pooled object otherwise instantiates a new object
     /// </summary>

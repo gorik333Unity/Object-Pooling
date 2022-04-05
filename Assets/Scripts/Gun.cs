@@ -1,14 +1,13 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Shooter : MonoBehaviour
+public class Gun : MonoBehaviour
 {
     [SerializeField]
     private Transform _shootPosition;
 
     [SerializeField]
-    private GameObject _bullet;
+    private Projectile _bullet;
 
     [SerializeField]
     private float _fireRate;
@@ -35,7 +34,7 @@ public class Shooter : MonoBehaviour
         {
             yield return new WaitForSeconds(_fireRate);
 
-            var projectile = Poolable.TryGetPoolable<Projectile>(_bullet);
+            var projectile = Poolable.TryGetPoolable<Projectile>(_bullet.gameObject);
 
             if (projectile != null)
             {
